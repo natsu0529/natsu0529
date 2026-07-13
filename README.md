@@ -6,7 +6,7 @@ I'm a Machine Learning Engineer and undergraduate researcher at the Takenawa Lab
 - **Engineering:** Go, Python, CMake, PostgreSQL, Flutter, and cloud infrastructure
 - **Current focus:** search-budget optimization and lightweight learning systems
 
-## Open-source contribution
+## Open-source contributions
 
 ### [wang-bin/fvp](https://github.com/wang-bin/fvp) — merged
 
@@ -15,6 +15,14 @@ I'm a Machine Learning Engineer and undergraduate researcher at the Takenawa Lab
 - Added optional SHA-256 verification for CMake dependency downloads to make native builds reproducible.
 - Implemented cache invalidation, atomic replacement, concurrency protection, and recovery from interrupted installs.
 - Added network-free CMake tests for Ubuntu and Windows and improved the related CI and Android example build.
+
+### [rlglab/minizero](https://github.com/rlglab/minizero) — merged
+
+[PR #12: Replace non-standard bitset `_Find_first` usage](https://github.com/rlglab/minizero/pull/12)
+
+- Replaced the non-standard `std::bitset::_Find_first()` dependency with a portable helper while preserving the existing libstdc++ fast path.
+- Added a Clang/libc++ fallback that scans 64-bit chunks with `__builtin_ctzll()`, improving macOS toolchain compatibility.
+- Updated call sites across the Go, Havannah, and KillallGo environments and validated the fallback and MiniZero Python module builds.
 
 ## Selected projects
 
