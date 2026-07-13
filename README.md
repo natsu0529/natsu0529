@@ -6,7 +6,7 @@ I'm a Machine Learning Engineer and undergraduate researcher at the Takenawa Lab
 - **Engineering:** Go, Python, CMake, PostgreSQL, Flutter, and cloud infrastructure
 - **Current focus:** search-budget optimization and lightweight learning systems
 
-## Open-source contributions
+## Open-source contribution
 
 ### [wang-bin/fvp](https://github.com/wang-bin/fvp) — merged
 
@@ -15,13 +15,6 @@ I'm a Machine Learning Engineer and undergraduate researcher at the Takenawa Lab
 - Added optional SHA-256 verification for CMake dependency downloads to make native builds reproducible.
 - Implemented cache invalidation, atomic replacement, concurrency protection, and recovery from interrupted installs.
 - Added network-free CMake tests for Ubuntu and Windows and improved the related CI and Android example build.
-
-### [spf13/cobra](https://github.com/spf13/cobra) — open
-
-[PR #2431: Fix hidden and deprecated commands changing padding in help text](https://github.com/spf13/cobra/pull/2431)
-
-- Fixed help-text alignment so hidden and deprecated commands no longer change padding for visible commands.
-- Added regression tests covering command addition and removal while preserving additional help topics.
 
 ## Selected projects
 
