@@ -18,6 +18,12 @@ I'm a Machine Learning Engineer and undergraduate researcher at the Takenawa Lab
 
 ### [rlglab/minizero](https://github.com/rlglab/minizero) — merged
 
+[PR #13: Expose MiniZero environments through Python bindings](https://github.com/rlglab/minizero/pull/13)
+
+- Added a pybind11 interface that lets Python research code directly use MiniZero's compiled C++ game environments.
+- Exposed environment control, legal actions, rewards, feature tensors, action history, and metadata with safe NumPy ownership and invalid-action handling.
+- Validated the API across TicTacToe, Go, and 2048, including configuration-dependent board sizes and environment-specific reset signatures.
+
 [PR #12: Replace non-standard bitset `_Find_first` usage](https://github.com/rlglab/minizero/pull/12)
 
 - Replaced the non-standard `std::bitset::_Find_first()` dependency with a portable helper while preserving the existing libstdc++ fast path.
