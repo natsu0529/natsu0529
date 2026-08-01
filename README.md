@@ -8,6 +8,14 @@ I'm a Machine Learning Engineer and undergraduate researcher at the Takenawa Lab
 
 ## Open-source contributions
 
+### [Farama-Foundation/Gymnasium](https://github.com/Farama-Foundation/Gymnasium) — merged
+
+[PR #1654: Use a trained-policy GIF for HalfCheetah](https://github.com/Farama-Foundation/Gymnasium/pull/1654)
+
+- Replaced the random-action HalfCheetah documentation GIF with a render of a policy trained with Stable-Baselines3 SAC for 1M timesteps, so the docs show a stable forward-running gait.
+- Verified the policy with deterministic evaluation over 10 episodes (11,772 ± 122 mean reward) and confirmed sustained forward motion with no falls or resets across the capture.
+- Followed the docs' `gen_gifs.py` conventions (301 frames, 50 ms per frame) and adjusted only the rendered floor extent for visibility, leaving environment dynamics and the policy untouched.
+
 ### [wang-bin/fvp](https://github.com/wang-bin/fvp) — merged
 
 [PR #381: Support checksum-pinned MDK SDK dependencies](https://github.com/wang-bin/fvp/pull/381)
