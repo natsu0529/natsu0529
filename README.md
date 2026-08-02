@@ -42,6 +42,8 @@ I'm a Machine Learning Engineer and undergraduate researcher at the Takenawa Lab
 
 | Project | What it demonstrates |
 | --- | --- |
+| [agent-mcts](https://github.com/natsu0529/mcts-llm-agent) | An MIT-licensed test-time MCTS search harness that turns coding agents (Claude Code first) into tree-searching agents — UCT over isolated git worktrees, test pass-ratio as the value function, live terminal tree. [On PyPI](https://pypi.org/project/agent-mcts/). |
+| [cc-plan-tree](https://github.com/natsu0529/cc-plan-tree) | A Claude Code plugin + Python CLI that turns plan mode into a visual design tree, verifies the tree against the implemented diff, and embeds it as Mermaid in PR bodies. [On PyPI](https://pypi.org/project/cc-plan-tree/). |
 | [original_LLM](https://github.com/natsu0529/original_LLM) | A small Japanese decoder-only Transformer trained from scratch in PyTorch without pretrained models or fine-tuning. |
 | [Ramen Radar](https://github.com/natsu0529/ramen-radar) | A Flutter application that combines Google ratings and real travel distance to rank nearby ramen shops. |
 
