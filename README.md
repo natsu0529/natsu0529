@@ -42,7 +42,6 @@ I'm a Machine Learning Engineer and undergraduate researcher at the Takenawa Lab
 
 | Project | What it demonstrates |
 | --- | --- |
-| [Pet Platform API](https://github.com/natsu0529/pet-app) | A deployed Go/PostgreSQL API with Firebase authentication, SQL migrations, Docker, and documented `curl` examples. |
 | [original_LLM](https://github.com/natsu0529/original_LLM) | A small Japanese decoder-only Transformer trained from scratch in PyTorch without pretrained models or fine-tuning. |
 | [Ramen Radar](https://github.com/natsu0529/ramen-radar) | A Flutter application that combines Google ratings and real travel distance to rank nearby ramen shops. |
 
