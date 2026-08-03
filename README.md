@@ -38,6 +38,8 @@ I'm a Machine Learning Engineer and undergraduate researcher at the Takenawa Lab
 - Added a Clang/libc++ fallback that scans 64-bit chunks with `__builtin_ctzll()`, improving macOS toolchain compatibility.
 - Updated call sites across the Go, Havannah, and KillallGo environments and validated the fallback and MiniZero Python module builds.
 
+Also merged: a minor documentation contribution to [dmlc/xgboost](https://github.com/dmlc/xgboost) ([PR #12392](https://github.com/dmlc/xgboost/pull/12392)).
+
 ## Selected projects
 
 | Project | What it demonstrates |
