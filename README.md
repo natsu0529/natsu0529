@@ -1,17 +1,23 @@
 # Natsuhiro Suzuki
 
-Undergraduate researcher at the **Takenawa Laboratory**, Tokyo University of Marine Science and Technology. I work on **search-budget allocation for Monte Carlo Tree Search in two-player zero-sum games** — and on getting search results out of the framework they were published in and into tools people actually run.
+Undergraduate researcher at the **Takenawa Laboratory**, Tokyo University of Marine Science and Technology. I work on **learned search-budget allocation for AlphaZero-style MCTS** — deciding, before search begins, how much of a game's fixed simulation budget each move should get — and on getting search results out of the framework they were published in and into tools people actually run.
 
-**Interests:** MCTS · AlphaZero/MuZero-style systems · reinforcement learning · test-time search for LLM agents · GBDTs
+**Interests:** MCTS · AlphaZero/MuZero-style systems · reinforcement learning · time management in game search · test-time search for LLM agents
 
 ## Research
 
-**Search-budget allocation for MCTS in two-player zero-sum games** (Takenawa Laboratory).
-Strength in AlphaZero-style systems is usually bought by spending more simulations. I am interested in the allocation question instead: given a *fixed* budget, where should it go, and when do additional simulations stop changing the decision?
+**Whole-game search-budget allocation for AlphaZero-style MCTS, learned end-to-end** — 9×9 Go, Takenawa Laboratory. Manuscript in preparation (target: IEEE CoG).
+
+DS-MCTS (Lan et al., AAAI 2021) and V-MCTS (Ye et al., NeurIPS 2022) speed up PV-MCTS by solving a *local* problem: how far to search *this* position, decided while searching. I work on a different one. Give the engine a fixed simulation budget for the **whole game** under a sudden-death rule — run out and you lose — and ask how much each move should get, decided **before** the search starts so the policy stays compatible with real time controls.
+
+- **Setup.** MiniZero's public 9×9 Go AlphaZero network (3 residual blocks, 3.62M parameters), frozen throughout. Each move is a binary decision: search with 800 simulations, or play the raw policy for a cost of one. The decision is made by a ~4.4k-parameter MLP trained with REINFORCE on win/loss alone, over 240k self-play games, at two operating points (mean budget 50% and 10% of the full search).
+- **Results.** Against opponents that do not manage budget — fixed-threshold difficulty gating, including a DS-MCTS State-UN baseline I reimplemented in the same codebase — the learned policy wins 71–93% by driving them to flag-fall. Under a hard-reservation rule where nobody *can* flag-fall, it still beats equal allocation (52–64%) and matches or beats the State-UN baseline (49–65%) at roughly a fifth of its per-move cost.
+- **The finding that reshaped the paper.** My original hypothesis was that a position-difficulty signal extracted from the frozen network's intermediate features would drive allocation; a probing study showed those features do carry more budget-relevant signal than the raw board. But when I removed the signal from the allocation policy entirely, nothing changed — head-to-head, the difficulty-aware and difficulty-free policies are indistinguishable (p = 0.15–0.71). Progress information alone — moves remaining, budget remaining — is sufficient in this game. That collapses the budget decision to 0.245 ms per move: 0.03% of one 800-simulation search, and about 1/5 of the State-UN forward pass.
+- **Status.** Single seed so far; replication across seeds is running, along with a check that a more direct supervision signal (value gained by searching) reproduces the null result.
 
 ## Research infrastructure
 
-Ordered by research relevance rather than size.
+The same question — where should a fixed search budget go — runs through the tooling too. Ordered by research relevance rather than size.
 
 ### [agent-mcts](https://github.com/natsu0529/mcts-llm-agent) — test-time MCTS over real software tasks · [PyPI](https://pypi.org/project/agent-mcts/) · MIT
 
@@ -27,7 +33,7 @@ Agent-agnostic by design — a thin adapter layer speaks each agent's headless m
 
 ### [rlglab/minizero](https://github.com/rlglab/minizero) — merged upstream
 
-MiniZero is RLGLab's AlphaZero/MuZero training framework (IEEE ToG). Both contributions target the friction between the compiled C++ core and the Python side research actually runs in.
+MiniZero is RLGLab's AlphaZero/MuZero training framework (IEEE ToG) and the engine my research runs on. Both contributions target the friction between the compiled C++ core and the Python side research actually happens in.
 
 - **[PR #13](https://github.com/rlglab/minizero/pull/13)** *(+131)* — a pybind11 interface exposing the compiled environments to Python: reset/act, legal actions, rewards, feature tensors, action history. Returns action IDs and copied NumPy arrays rather than handing out C++ internals. Validated across TicTacToe, Go, and 2048, including configuration-dependent board sizes and environment-specific reset signatures.
 - **[PR #12](https://github.com/rlglab/minizero/pull/12)** *(+63/−43)* — replaced a non-standard `std::bitset::_Find_first()` dependency with a portable `__builtin_ctzll()` fallback while preserving the libstdc++ fast path, so MiniZero builds under Clang/libc++.
