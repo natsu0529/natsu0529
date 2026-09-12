@@ -8,6 +8,8 @@ I'm a Machine Learning Engineer and undergraduate researcher at the Takenawa Lab
 
 ## Open-source contributions
 
+**6 merged pull requests across 5 upstream projects.**
+
 ### [Farama-Foundation/Gymnasium](https://github.com/Farama-Foundation/Gymnasium) — merged
 
 [PR #1654: Use a trained-policy GIF for HalfCheetah](https://github.com/Farama-Foundation/Gymnasium/pull/1654)
@@ -38,7 +40,7 @@ I'm a Machine Learning Engineer and undergraduate researcher at the Takenawa Lab
 - Added a Clang/libc++ fallback that scans 64-bit chunks with `__builtin_ctzll()`, improving macOS toolchain compatibility.
 - Updated call sites across the Go, Havannah, and KillallGo environments and validated the fallback and MiniZero Python module builds.
 
-Also merged: a minor documentation contribution to [dmlc/xgboost](https://github.com/dmlc/xgboost) ([PR #12392](https://github.com/dmlc/xgboost/pull/12392)).
+Also merged: minor documentation contributions to [dmlc/xgboost](https://github.com/dmlc/xgboost) ([PR #12392](https://github.com/dmlc/xgboost/pull/12392)) and [aeon-toolkit/aeon](https://github.com/aeon-toolkit/aeon) ([PR #3801](https://github.com/aeon-toolkit/aeon/pull/3801)).
 
 ## Selected projects
 
