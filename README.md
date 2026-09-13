@@ -1,73 +1,61 @@
-# Hi, I'm Natsuhiro Suzuki 👋
+# Natsuhiro Suzuki
 
-I'm a Machine Learning Engineer and undergraduate researcher at the Takenawa Laboratory, Tokyo University of Marine Science and Technology. I enjoy turning research ideas into reliable software, especially where search algorithms, machine learning, and backend systems meet.
+Undergraduate researcher at the **Takenawa Laboratory**, Tokyo University of Marine Science and Technology, working on Monte Carlo Tree Search and reinforcement learning in AlphaZero-style game engines. First-author manuscript in preparation, targeting **IEEE Conference on Games (CoG) 2027**.
 
-- **Research:** Monte Carlo Tree Search (MCTS), reinforcement learning, GBDTs, and efficient search
-- **Engineering:** Go, Python, CMake, PostgreSQL, Flutter, and cloud infrastructure
-- **Current focus:** search-budget optimization and lightweight learning systems
+**Looking for:** research internships in search, reinforcement learning, and test-time compute.
+
+## Research
+
+MCTS and reinforcement learning for AlphaZero-style engines, at the Takenawa Laboratory. The current project is being prepared for submission, so the write-up is not public yet.
+
+What I can show is how I run experiments:
+
+- **Baselines get reimplemented in my own codebase.** Published numbers come from different engines, network sizes, and evaluation conditions, so comparing across papers is not a comparison. If a method is my baseline, it runs in my environment under my conditions.
+- **Conclusions wait for enough games.** Win rates are reported with significance tests and match counts large enough to separate a real effect from noise, and I re-run evaluations when a change to the training setup makes earlier numbers non-comparable.
+- **Everything goes in a running log** — what changed, what the number did, what to try next — including the runs that went against what I expected. Those are the ones worth keeping.
+- **Public models and libraries where possible**, so results can be reproduced outside my lab.
+
+Day to day this means PyTorch, C++ via pybind11, CUDA, and a lot of self-play compute to schedule.
 
 ## Open-source contributions
 
-**6 merged pull requests across 5 upstream projects.**
-
-### [Farama-Foundation/Gymnasium](https://github.com/Farama-Foundation/Gymnasium) — merged
-
-[PR #1654: Use a trained-policy GIF for HalfCheetah](https://github.com/Farama-Foundation/Gymnasium/pull/1654)
-
-- Replaced the random-action HalfCheetah documentation GIF with a render of a policy trained with Stable-Baselines3 SAC for 1M timesteps, so the docs show a stable forward-running gait.
-- Verified the policy with deterministic evaluation over 10 episodes (11,772 ± 122 mean reward) and confirmed sustained forward motion with no falls or resets across the capture.
-- Followed the docs' `gen_gifs.py` conventions (301 frames, 50 ms per frame) and adjusted only the rendered floor extent for visibility, leaving environment dynamics and the policy untouched.
-
-### [wang-bin/fvp](https://github.com/wang-bin/fvp) — merged
-
-[PR #381: Support checksum-pinned MDK SDK dependencies](https://github.com/wang-bin/fvp/pull/381)
-
-- Added optional SHA-256 verification for CMake dependency downloads to make native builds reproducible.
-- Implemented cache invalidation, atomic replacement, concurrency protection, and recovery from interrupted installs.
-- Added network-free CMake tests for Ubuntu and Windows and improved the related CI and Android example build.
+Six merged pull requests across five upstream projects, mostly in the research-tooling layer I work in.
 
 ### [rlglab/minizero](https://github.com/rlglab/minizero) — merged
 
-[PR #13: Expose MiniZero environments through Python bindings](https://github.com/rlglab/minizero/pull/13)
+MiniZero is RLGLab's AlphaZero/MuZero training framework (IEEE ToG). Both contributions target the friction between its compiled C++ core and the Python side research actually happens in.
 
-- Added a pybind11 interface that lets Python research code directly use MiniZero's compiled C++ game environments.
-- Exposed environment control, legal actions, rewards, feature tensors, action history, and metadata with safe NumPy ownership and invalid-action handling.
-- Validated the API across TicTacToe, Go, and 2048, including configuration-dependent board sizes and environment-specific reset signatures.
+- **[PR #13](https://github.com/rlglab/minizero/pull/13)** *(+131)* — a pybind11 interface exposing the compiled environments to Python: reset/act, legal actions, rewards, feature tensors, action history. Returns action IDs and copied NumPy arrays rather than handing out C++ internals. Validated across TicTacToe, Go, and 2048, including configuration-dependent board sizes and environment-specific reset signatures.
+- **[PR #12](https://github.com/rlglab/minizero/pull/12)** *(+63/−43)* — replaced a non-standard `std::bitset::_Find_first()` dependency with a portable `__builtin_ctzll()` fallback while preserving the libstdc++ fast path, so MiniZero builds under Clang/libc++.
 
-[PR #12: Replace non-standard bitset `_Find_first` usage](https://github.com/rlglab/minizero/pull/12)
+### [wang-bin/fvp](https://github.com/wang-bin/fvp) — merged
 
-- Replaced the non-standard `std::bitset::_Find_first()` dependency with a portable helper while preserving the existing libstdc++ fast path.
-- Added a Clang/libc++ fallback that scans 64-bit chunks with `__builtin_ctzll()`, improving macOS toolchain compatibility.
-- Updated call sites across the Go, Havannah, and KillallGo environments and validated the fallback and MiniZero Python module builds.
+- **[PR #381](https://github.com/wang-bin/fvp/pull/381)** *(+692/−52, 10 files)* — checksum-pinned MDK SDK dependencies: optional SHA-256 verification for CMake dependency downloads, with cache invalidation, atomic replacement, concurrent-build protection, and recovery from interrupted installs. Network-free CMake tests on Ubuntu and Windows.
 
-Also merged: minor documentation contributions to [dmlc/xgboost](https://github.com/dmlc/xgboost) ([PR #12392](https://github.com/dmlc/xgboost/pull/12392)) and [aeon-toolkit/aeon](https://github.com/aeon-toolkit/aeon) ([PR #3801](https://github.com/aeon-toolkit/aeon/pull/3801)).
+Also merged: a trained-policy documentation GIF for [Gymnasium#1654](https://github.com/Farama-Foundation/Gymnasium/pull/1654), and documentation fixes to [xgboost#12392](https://github.com/dmlc/xgboost/pull/12392) and [aeon#3801](https://github.com/aeon-toolkit/aeon/pull/3801).
 
-## Selected projects
+## Projects
 
-| Project | What it demonstrates |
+| Project | What it is |
 | --- | --- |
-| [agent-mcts](https://github.com/natsu0529/mcts-llm-agent) | An MIT-licensed test-time MCTS search harness that turns coding agents (Claude Code first) into tree-searching agents — UCT over isolated git worktrees, test pass-ratio as the value function, live terminal tree. [On PyPI](https://pypi.org/project/agent-mcts/). |
-| [cc-plan-tree](https://github.com/natsu0529/cc-plan-tree) | A Claude Code plugin + Python CLI that turns plan mode into a visual design tree, verifies the tree against the implemented diff, and embeds it as Mermaid in PR bodies. [On PyPI](https://pypi.org/project/cc-plan-tree/). |
-| [original_LLM](https://github.com/natsu0529/original_LLM) | A small Japanese decoder-only Transformer trained from scratch in PyTorch without pretrained models or fine-tuning. |
-| [Ramen Radar](https://github.com/natsu0529/ramen-radar) | A Flutter application that combines Google ratings and real travel distance to rank nearby ramen shops. |
+| **[agent-mcts](https://github.com/natsu0529/mcts-llm-agent)** · [PyPI](https://pypi.org/project/agent-mcts/) · MIT | A test-time MCTS search harness for coding agents. Real UCT — selection, expansion, evaluation, backup — with each node an isolated `git worktree` plus a forked agent session, the project's own test suite as the value function, and an append-only journal so an interrupted search is still a valid tree. Search hyperparameters are first-class, so it doubles as a harness for test-time-search experiments. CI, 12 test modules. |
+| **[original_LLM](https://github.com/natsu0529/original_LLM)** | A small Japanese decoder-only Transformer trained from scratch in PyTorch — no pretrained weights, no fine-tuning, tokenizer to sampling loop written by hand. Kept as a controlled-experiment log with per-run configs, losses, and the reasoning for what to try next. |
+| **[cc-plan-tree](https://github.com/natsu0529/cc-plan-tree)** · [PyPI](https://pypi.org/project/cc-plan-tree/) · MIT | A Claude Code plugin and CLI that turns plan mode into a design tree, verifies it against the diff that was actually implemented, and embeds it as Mermaid in the PR body. |
+| **[Ramen Radar](https://github.com/natsu0529/ramen-radar)** | A Flutter app that ranks nearby ramen shops by real travel distance rather than straight-line proximity. |
 
-## Technical interests
+## Engineering
 
-- **Machine learning:** MCTS, AlphaZero-style systems, reinforcement learning, deep learning, and GBDTs
-- **Backend:** Go, Python, Django REST Framework, PostgreSQL, REST APIs, and Docker
-- **Client:** Flutter, Riverpod, Next.js, and TypeScript
-- **Infrastructure:** AWS, Render, Supabase, GitHub Actions, and CMake
+Most of my commits land in private repositories: backend and ML-infrastructure work on a production recommendation and generative-media product, shipped continuously with a small team. Deploy orchestration for auto-scaling fleets — a state machine, artifact verification before promotion, smoke-test gates, rollback — plus candidate generation from a social graph into a served ranking path with versioned artifacts, and fail-closed handling of external-dependency failure. Go, Python, AWS, Terraform/Ansible, Redis/RQ, GitHub Actions.
+
+It is why experiment infrastructure is something I build rather than wait for.
 
 ## Affiliation
 
-- Undergraduate Researcher, **Takenawa Laboratory**
-- 4th-year undergraduate, **Tokyo University of Marine Science and Technology (TUMSAT)**
-- Major: Logistics and Information Engineering
+4th-year undergraduate, Tokyo University of Marine Science and Technology — Logistics and Information Engineering.
+Undergraduate researcher, Takenawa Laboratory.
 
 ## Contact
 
-I'm open to conversations about ML research, open-source collaboration, and engineering opportunities.
+Open to conversations about search, reinforcement learning, and research internships.
 
-- Website: [suzukioff.com](https://suzukioff.com)
-- LinkedIn: [Natsuhiro Suzuki](https://www.linkedin.com/in/natsuhiro-suzuki-1b6a90382/)
-- Email: [suzuki@suzukioff.com](mailto:suzuki@suzukioff.com)
+[suzukioff.com](https://suzukioff.com) · [LinkedIn](https://www.linkedin.com/in/natsuhiro-suzuki-1b6a90382/) · [suzuki@suzukioff.com](mailto:suzuki@suzukioff.com)
