@@ -1,12 +1,12 @@
 # Natsuhiro Suzuki
 
-Undergraduate researcher at the **Takenawa Laboratory**, Tokyo University of Marine Science and Technology, working on Monte Carlo Tree Search and reinforcement learning in AlphaZero-style game engines. First-author manuscript in preparation, targeting **IEEE Conference on Games (CoG) 2027**.
+Undergraduate researcher at the **Takenawa Laboratory**, Tokyo University of Marine Science and Technology, working on **search-budget allocation for Monte Carlo Tree Search in two-player zero-sum games**. First-author manuscript in preparation, targeting **IEEE Conference on Games (CoG) 2027**.
 
 **Looking for:** research internships in search, reinforcement learning, and test-time compute.
 
 ## Research
 
-MCTS and reinforcement learning for AlphaZero-style engines, at the Takenawa Laboratory. The current project is being prepared for submission, so the write-up is not public yet.
+Search-budget allocation for MCTS in two-player zero-sum games, at the Takenawa Laboratory — how a fixed simulation budget should be spent to get the most decision quality out of it. The current project is being prepared for submission, so the write-up is not public yet.
 
 What I can show is how I run experiments:
 
