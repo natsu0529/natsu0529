@@ -1,12 +1,12 @@
 # Natsuhiro Suzuki
 
-Undergraduate researcher at the **Takenawa Laboratory**, Tokyo University of Marine Science and Technology, working on **search-budget allocation for Monte Carlo Tree Search in two-player zero-sum games**. First-author manuscript in preparation, targeting **IEEE Conference on Games (CoG) 2027**.
+Undergraduate researcher at the **Takenawa Laboratory**, Tokyo University of Marine Science and Technology, working on **game AI and search algorithms**.
 
 **Looking for:** research internships in search, reinforcement learning, and test-time compute.
 
 ## Research
 
-Search-budget allocation for MCTS in two-player zero-sum games, at the Takenawa Laboratory — how a fixed simulation budget should be spent to get the most decision quality out of it. The current project is being prepared for submission, so the write-up is not public yet.
+Game AI and search algorithms, at the Takenawa Laboratory. The write-up is not public.
 
 What I can show is how I run experiments:
 
@@ -23,7 +23,7 @@ Six merged pull requests across five upstream projects, mostly in the research-t
 
 ### [rlglab/minizero](https://github.com/rlglab/minizero) — merged
 
-MiniZero is RLGLab's AlphaZero/MuZero training framework (IEEE ToG). Both contributions target the friction between its compiled C++ core and the Python side research actually happens in.
+MiniZero is RLGLab's AlphaZero/MuZero training framework. Both contributions target the friction between its compiled C++ core and the Python side research actually happens in.
 
 - **[PR #13](https://github.com/rlglab/minizero/pull/13)** *(+131)* — a pybind11 interface exposing the compiled environments to Python: reset/act, legal actions, rewards, feature tensors, action history. Returns action IDs and copied NumPy arrays rather than handing out C++ internals. Validated across TicTacToe, Go, and 2048, including configuration-dependent board sizes and environment-specific reset signatures.
 - **[PR #12](https://github.com/rlglab/minizero/pull/12)** *(+63/−43)* — replaced a non-standard `std::bitset::_Find_first()` dependency with a portable `__builtin_ctzll()` fallback while preserving the libstdc++ fast path, so MiniZero builds under Clang/libc++.
