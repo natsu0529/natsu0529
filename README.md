@@ -15,7 +15,7 @@ What I can show is how I run experiments:
 - **Everything goes in a running log** — what changed, what the number did, what to try next — including the runs that went against what I expected. Those are the ones worth keeping.
 - **Public models and libraries where possible**, so results can be reproduced outside my lab.
 
-Day to day this means PyTorch, C++ via pybind11, CUDA, and a lot of self-play compute to schedule.
+Day to day this means Python, PyTorch, and a lot of GPU self-play compute to schedule.
 
 ## Open-source contributions
 
