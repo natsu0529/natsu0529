@@ -53,6 +53,7 @@ It is why experiment infrastructure is something I build rather than wait for.
 
 4th-year undergraduate, Tokyo University of Marine Science and Technology — Logistics and Information Engineering.
 Undergraduate researcher, Takenawa Laboratory.
+Reinforcement learning R&D intern, [GHELIA Inc.](https://ghelia.com/), since November 2026.
 
 ## Contact
 
