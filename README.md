@@ -1,62 +1,44 @@
-# Natsuhiro Suzuki
+# Natsuhiro Suzuki (鈴木 夏大)
 
-Undergraduate researcher at the **Takenawa Laboratory**, Tokyo University of Marine Science and Technology, working on **game AI and search algorithms**.
+I am a fourth-year undergraduate in the Takenawa Laboratory at Tokyo University of Marine Science and Technology (TUMSAT), where I study search algorithms and reinforcement learning for game AI. I will start the master's program at TUMSAT in April 2027.
 
-**Looking for:** research internships in search, reinforcement learning, and test-time compute.
+Alongside my research, I work at Meltly Inc. on machine learning and infrastructure for Days AI, an AI illustration app. Since November 2026 I have also been a reinforcement learning research intern at [GHELIA Inc.](https://ghelia.com/)
+
+While I am a student, I am open to remote, part-time research positions related to search and reinforcement learning.
+
+[Homepage](https://suzukioff.com/en/) ([日本語](https://suzukioff.com/), [中文](https://suzukioff.com/zh/)) / [LinkedIn](https://www.linkedin.com/in/natsuhiro-suzuki-1b6a90382/) / [Email](mailto:suzuki@suzukioff.com) / [Zenn](https://zenn.dev/natsu529) / [Qiita](https://qiita.com/natsu529)
 
 ## Research
 
-Game AI and search algorithms, at the Takenawa Laboratory. The write-up is not public.
+I study search algorithms for game AI, and how to improve the quality of their decisions, through both theory and experiments. I am interested in methods that combine search with learning.
 
-What I can show is how I run experiments:
+In my experiments I reimplement the baselines in my own codebase and compare them under identical conditions. I evaluate win rates over a sufficient number of games and with significance tests. I also send features and fixes to [MiniZero](https://github.com/rlglab/minizero), the training framework I use in my research.
 
-- **Baselines get reimplemented in my own codebase.** Published numbers come from different engines, network sizes, and evaluation conditions, so comparing across papers is not a comparison. If a method is my baseline, it runs in my environment under my conditions.
-- **Conclusions wait for enough games.** Win rates are reported with significance tests and match counts large enough to separate a real effect from noise, and I re-run evaluations when a change to the training setup makes earlier numbers non-comparable.
-- **Everything goes in a running log** — what changed, what the number did, what to try next — including the runs that went against what I expected. Those are the ones worth keeping.
-- **Public models and libraries where possible**, so results can be reproduced outside my lab.
+I will list papers on my [homepage](https://suzukioff.com/en/) once they are public.
 
-Day to day this means Python, PyTorch, and a lot of GPU self-play compute to schedule.
+## Open source
 
-## Open-source contributions
+These are my main contributions to external projects. The rest are in [this list of merged pull requests](https://github.com/search?q=author%3Anatsu0529+is%3Apr+is%3Amerged+is%3Apublic+-user%3Anatsu0529&type=pullrequests).
 
-Six merged pull requests across five upstream projects, mostly in the research-tooling layer I work in.
+- [Trained-policy documentation GIF for HalfCheetah](https://github.com/Farama-Foundation/Gymnasium/pull/1654) (Farama-Foundation/Gymnasium #1654). Replaced the random-action GIF in the documentation with a render of a policy trained with SAC for one million timesteps. Its mean reward over 10 deterministic evaluation episodes is 11,772 ± 122.
+- [Checksum verification for dependencies downloaded by CMake](https://github.com/wang-bin/fvp/pull/381) (wang-bin/fvp #381). Added SHA-256 verification for the native dependency downloaded at build time, which makes builds reproducible. The change also handles cache invalidation, concurrent runs, and recovery from interrupted installs.
+- [Python bindings for MiniZero environments](https://github.com/rlglab/minizero/pull/13) (rlglab/minizero #13). Made the environments of MiniZero, an AlphaZero / MuZero training framework, usable directly from Python research code. Verified with TicTacToe, Go, and 2048.
 
-### [rlglab/minizero](https://github.com/rlglab/minizero) — merged
+## Software
 
-MiniZero is RLGLab's AlphaZero/MuZero training framework. Both contributions target the friction between its compiled C++ core and the Python side research actually happens in.
+- [agent-mcts](https://github.com/natsu0529/mcts-llm-agent) ([PyPI](https://pypi.org/project/agent-mcts/)). A harness that makes a coding agent run tree search (MCTS) at test time. Each node is expanded as an independent git worktree and agent session, and UCT searches with the test pass rate as the value.
+- [Original LLM](https://github.com/natsu0529/original_LLM). A Japanese decoder-only Transformer implemented from scratch in PyTorch, without any existing model. Install it with `uv tool install original-llm`.
 
-- **[PR #13](https://github.com/rlglab/minizero/pull/13)** *(+131)* — a pybind11 interface exposing the compiled environments to Python: reset/act, legal actions, rewards, feature tensors, action history. Returns action IDs and copied NumPy arrays rather than handing out C++ internals. Validated across TicTacToe, Go, and 2048, including configuration-dependent board sizes and environment-specific reset signatures.
-- **[PR #12](https://github.com/rlglab/minizero/pull/12)** *(+63/−43)* — replaced a non-standard `std::bitset::_Find_first()` dependency with a portable `__builtin_ctzll()` fallback while preserving the libstdc++ fast path, so MiniZero builds under Clang/libc++.
+## Experience
 
-### [wang-bin/fvp](https://github.com/wang-bin/fvp) — merged
+**Reinforcement Learning Research Intern, GHELIA Inc.** (Nov 2026 – present)
 
-- **[PR #381](https://github.com/wang-bin/fvp/pull/381)** *(+692/−52, 10 files)* — checksum-pinned MDK SDK dependencies: optional SHA-256 verification for CMake dependency downloads, with cache invalidation, atomic replacement, concurrent-build protection, and recovery from interrupted installs. Network-free CMake tests on Ubuntu and Windows.
+I work on reinforcement learning research at GHELIA, an AI research and development company.
 
-Also merged: a trained-policy documentation GIF for [Gymnasium#1654](https://github.com/Farama-Foundation/Gymnasium/pull/1654), and documentation fixes to [xgboost#12392](https://github.com/dmlc/xgboost/pull/12392) and [aeon#3801](https://github.com/aeon-toolkit/aeon/pull/3801).
+**Software Engineer, ML and Infrastructure (contract), Meltly Inc.** (Jul 2025 – present)
 
-## Projects
+I am on the small team behind Days AI, an AI illustration app, where I am responsible for the machine learning work and much of the infrastructure it runs on. Most of these commits are in private repositories.
 
-| Project | What it is |
-| --- | --- |
-| **[agent-mcts](https://github.com/natsu0529/mcts-llm-agent)** · [PyPI](https://pypi.org/project/agent-mcts/) · MIT | A test-time MCTS search harness for coding agents. Real UCT — selection, expansion, evaluation, backup — with each node an isolated `git worktree` plus a forked agent session, the project's own test suite as the value function, and an append-only journal so an interrupted search is still a valid tree. Search hyperparameters are first-class, so it doubles as a harness for test-time-search experiments. CI, 12 test modules. |
-| **[original_LLM](https://github.com/natsu0529/original_LLM)** | A small Japanese decoder-only Transformer trained from scratch in PyTorch — no pretrained weights, no fine-tuning, tokenizer to sampling loop written by hand. Kept as a controlled-experiment log with per-run configs, losses, and the reasoning for what to try next. |
-| **[cc-plan-tree](https://github.com/natsu0529/cc-plan-tree)** · [PyPI](https://pypi.org/project/cc-plan-tree/) · MIT | A Claude Code plugin and CLI that turns plan mode into a design tree, verifies it against the diff that was actually implemented, and embeds it as Mermaid in the PR body. |
-| **[Ramen Radar](https://github.com/natsu0529/ramen-radar)** | A Flutter app that ranks nearby ramen shops by real travel distance rather than straight-line proximity. |
+I connected candidate generation from the social graph to the ranking path that is actually served. I also built a model that predicts how likely a post is to be liked, for evaluating the recommender, so that we can estimate the effect of an algorithm change before it reaches production. On the infrastructure side, I implemented deploy orchestration for auto-scaling fleets, including artifact verification before promotion, smoke tests, and rollback, as well as fail-closed handling of outages in external services.
 
-## Engineering
-
-Most of my commits land in private repositories: backend and ML-infrastructure work on a production recommendation and generative-media product, shipped continuously with a small team. Deploy orchestration for auto-scaling fleets — a state machine, artifact verification before promotion, smoke-test gates, rollback — plus candidate generation from a social graph into a served ranking path with versioned artifacts, and fail-closed handling of external-dependency failure. Go, Python, AWS, Terraform/Ansible, Redis/RQ, GitHub Actions.
-
-It is why experiment infrastructure is something I build rather than wait for.
-
-## Affiliation
-
-4th-year undergraduate, Tokyo University of Marine Science and Technology — Logistics and Information Engineering.
-Undergraduate researcher, Takenawa Laboratory.
-Reinforcement learning R&D intern, [GHELIA Inc.](https://ghelia.com/), since November 2026.
-
-## Contact
-
-Open to conversations about search, reinforcement learning, and research internships.
-
-[suzukioff.com](https://suzukioff.com) · [LinkedIn](https://www.linkedin.com/in/natsuhiro-suzuki-1b6a90382/) · [suzuki@suzukioff.com](mailto:suzuki@suzukioff.com)
+This work is covered in a [case study interview by Classmethod, Inc.](https://classmethod.jp/cases/meltly-craftlab/) (in Japanese), published in October 2026.
