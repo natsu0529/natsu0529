@@ -26,7 +26,7 @@ These are my main contributions to external projects. The rest are in [this list
 
 ## Software
 
-- [agent-mcts](https://github.com/natsu0529/mcts-llm-agent) ([PyPI](https://pypi.org/project/agent-mcts/)). A harness that makes a coding agent run tree search (MCTS) at test time. Each node is expanded as an independent git worktree and agent session, and UCT searches with the test pass rate as the value.
+- [agent-mcts](https://github.com/natsu0529/agent-mcts) ([PyPI](https://pypi.org/project/agent-mcts/)). A harness that makes a coding agent run tree search (MCTS) at test time. Each node is expanded as an independent git worktree and agent session, and UCT searches with the test pass rate as the value.
 - [Original LLM](https://github.com/natsu0529/original_LLM). A Japanese decoder-only Transformer implemented from scratch in PyTorch, without any existing model. Install it with `uv tool install original-llm`.
 
 ## Experience
