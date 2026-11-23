@@ -2,7 +2,7 @@
 
 I am a fourth-year undergraduate in the Takenawa Laboratory at Tokyo University of Marine Science and Technology (TUMSAT), where I study search algorithms and reinforcement learning for game AI. I will start the master's program at TUMSAT in April 2027.
 
-Alongside my research, I work at Meltly Inc. on machine learning and infrastructure for Days AI, an AI illustration app. Since November 2026 I have also been a reinforcement learning research intern at [GHELIA Inc.](https://ghelia.com/)
+Alongside my research, I work at Meltly Inc. on the recommender system of Days AI, an AI illustration app, handling most of its machine learning and infrastructure. Since November 2026 I have also been a reinforcement learning research intern at [GHELIA Inc.](https://ghelia.com/)
 
 While I am a student, I am open to remote, part-time research positions related to search and reinforcement learning.
 
@@ -37,7 +37,7 @@ I work on reinforcement learning research at GHELIA, an AI research and developm
 
 **Software Engineer, ML and Infrastructure (contract), Meltly Inc.** (Jul 2025 – present)
 
-I am on the small team behind Days AI, an AI illustration app, where I am responsible for the machine learning work and much of the infrastructure it runs on. Most of these commits are in private repositories.
+I am on the small team behind Days AI, an AI illustration app, where I handle most of the machine learning and infrastructure for its recommender system. Most of these commits are in private repositories.
 
 I connected candidate generation from the social graph to the ranking path that is actually served. I also built a model that predicts how likely a post is to be liked, for evaluating the recommender, so that we can estimate the effect of an algorithm change before it reaches production. On the infrastructure side, I implemented deploy orchestration for auto-scaling fleets, including artifact verification before promotion, smoke tests, and rollback, as well as fail-closed handling of outages in external services.
 
