@@ -20,14 +20,14 @@ I will list papers on my [homepage](https://suzukioff.com/en/) once they are pub
 
 These are my main contributions to external projects. The rest are in [this list of merged pull requests](https://github.com/search?q=author%3Anatsu0529+is%3Apr+is%3Amerged+is%3Apublic+-user%3Anatsu0529&type=pullrequests).
 
-- [Trained-policy documentation GIF for HalfCheetah](https://github.com/Farama-Foundation/Gymnasium/pull/1654) (Farama-Foundation/Gymnasium #1654). Replaced the random-action GIF in the documentation with a render of a policy trained with SAC for one million timesteps. Its mean reward over 10 deterministic evaluation episodes is 11,772 ± 122.
+- [Restored Linux CI for the Leela Chess Zero chess engine](https://github.com/LeelaChessZero/lc0/pull/2516). Switched the Linux build to Microsoft’s NuGet package for ONNX Runtime. In a [follow-up PR](https://github.com/LeelaChessZero/lc0/pull/2518), I verified all five Syzygy endgame tablebase tests in CI and checked that the engine returned a move using the ONNX CPU backend.
 - [Checksum verification for dependencies downloaded by CMake](https://github.com/wang-bin/fvp/pull/381) (wang-bin/fvp #381). Added SHA-256 verification for the native dependency downloaded at build time, which makes builds reproducible. The change also handles cache invalidation, concurrent runs, and recovery from interrupted installs.
 - [Python bindings for MiniZero environments](https://github.com/rlglab/minizero/pull/13) (rlglab/minizero #13). Made the environments of MiniZero, an AlphaZero / MuZero training framework, usable directly from Python research code. Verified with TicTacToe, Go, and 2048.
 
 ## Software
 
+- [mac-alpha-zero](https://github.com/natsu0529/mac-alpha-zero) ([PyPI](https://pypi.org/project/mac-alpha-zero/)). A Python library for training Connect Four and Othello agents through self-play on Apple Silicon. It implements batched Monte Carlo tree search and Gumbel AlphaZero using MLX. You can play against the released Othello model.
 - [agent-mcts](https://github.com/natsu0529/agent-mcts) ([PyPI](https://pypi.org/project/agent-mcts/)). A harness that makes a coding agent run tree search (MCTS) at test time. Each node is expanded as an independent git worktree and agent session, and UCT searches with the test pass rate as the value.
-- [Original LLM](https://github.com/natsu0529/original_LLM). A Japanese decoder-only Transformer implemented from scratch in PyTorch, without any existing model. Install it with `uv tool install original-llm`.
 
 ## Experience
 
